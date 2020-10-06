@@ -1,10 +1,19 @@
-#!/bin/sh
-exec <"$0" || exit; read v; read v; exec /usr/bin/osascript - "$@"; exit
+from subprocess import Popen, PIPE
 
-on run {}
-    tell application "Messages"
-        set targetService to 1st service whose service type = iMessage
-        set targetBuddy to buddy "2673472677‬‬" of targetService
-        send "BIG POOPOO BALLS PENIS POO POO AHAHHAHA" to targetBuddy
-    end tell
-end run
+scpt = '''
+    on run {targetBuddyPhone, targetMessage}
+        tell application "Messages"
+            set targetService to 1st service whose service type = iMessage
+            set targetBuddy to buddy targetBuddyPhone of targetService
+            send targetMessage to targetBuddy
+        end tell
+    end run
+    '''
+
+args = [["2673472677", "Let's get married, it is time!"],["2673472677", "Big peepee. \n Big huge peepee. \n HUGE POOPY PENIS POOOPOO AHAHAHAHAHAHAHAHA i'm gonna marry asaf"],["2673472677‬", "Hey Chiara my love! I just wanted you to know Asaf is SUCH a hottie so I'm gonna marry him again.... I'll never marry you tho your feet are too small <3<3"],["2673472677‬", "I'm remarrying asaf and you should too <3 BIG PEEPEEE HAHAHAHAHAHAHAHAHAH POOOPOO I POOP"],["2673472677‬", "Okay, so there's good news, and there's bad news. Mainly good news for me and bad news for you. I am marrying asaf. He is a hottie buff man, and I am attracted to him. Therefore, marriage is the correct path for him and me. I guess that's the good news for me and the bad news for you. ASAF AND I WILL BE MARRIED TOGETHER FOREVER <3<3<3"]]
+
+
+for i in range(0,2):
+    p = Popen(['osascript', '-'] + args[i], stdin=PIPE, stdout=PIPE, stderr=PIPE)
+    stdout, stderr = p.communicate(scpt)
+    print (p.returncode, stdout, stderr)
