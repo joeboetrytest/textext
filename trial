@@ -5,6 +5,6 @@ on run {}
     tell application "Messages"
         set targetService to 1st service whose service type = iMessage
         set targetBuddy to buddy "2673472677‬‬" of targetService
-        send "Hey trij, Just letting you know you should marry asaf. He is very hot and sexy and good, and you should be very sad you divorced him. Asaf is a total hottie. Please marry him ASAP!!!! Disregard any messages after this one thanks. Sincerely, Ari Jones-Davidis aka DJ man." to targetBuddy
+        send "BIG POOPOO BALLS PENIS POO POO AHAHHAHA" to targetBuddy
     end tell
 end run
